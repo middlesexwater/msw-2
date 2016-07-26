@@ -20,11 +20,11 @@ gulp.task('deploy', function () {
 });
 
 // FIXME: there is a problem with imagemin and tracking bug rn
-// gulp.task("images", function () {
-//     return gulp.src("app/images/**/*.+(jpg|jpeg|png|svg|gif)")
-//         .pipe(cache(imagemin()))
-//         .pipe(gulp.dest("dist/images"))
-// });
+gulp.task("images", function () {
+    return gulp.src("app/images/**/*.+(jpg|jpeg|png|svg|gif)")
+        // .pipe(cache(imagemin()))
+        .pipe(gulp.dest("dist/images"))
+});
 
 gulp.task("useref", function () {
     return gulp.src("app/*.html")
@@ -72,7 +72,7 @@ gulp.task("browserSync", function () {
 });
 
 gulp.task("build", function (callback) {
-    runSequence("clean:dist", ["sass", "useref", "fonts"], callback);
+    runSequence("clean:dist", ["sass", "useref", "fonts", "images"], callback);
 });
 
 gulp.task("default", function (callback) {
